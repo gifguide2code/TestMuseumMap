@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+	 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+</head>
+<body>
+<div id="map"></div>
+<style>
+	#map {position: absolute;top: 0;bottom: 0;left: 0;right: 0;}
+</style>
+<script>
+
+var Museum = L.icon({
+    iconUrl: 'MuseumMarker.png',
+
+    iconSize:     [100, 150], // size of the icon
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+	
+var map = L.map('map').setView([38.4528, -99.9065], 4.5);
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v8',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoiZ2lmZ3VpZGUyY29kZSIsImEiOiJja3doc3AxcmsxMW5kMzFwd2Ywd3NrdDE1In0.vIDHYxZWOsGWwmQPaXdpAQ'
+	}).addTo(map);
+
+var spamMuseum = L.marker([43.6693, -92.9747], {icon:Museum}).addTo(map);
+spamMuseum.bindPopup("<b>The Spam Museum</b><br>Yes, it's a museum dedicated to Spam.");
+var drPepper = L.marker([31.5547, -97.1290], {icon:Museum}).addTo(map);
+drPepper.bindPopup("<b>The Dr. Pepper Museum</b><br>Three floors of exhibits, which change out regularly!");
+var cocaCola = L.marker([33.7626, -84.3924], {icon:Museum}).addTo(map);
+cocaCola.bindPopup("<b>World of Coca-Cola</b><br>Showcasing the history of Coca-Cola!");
+var jello = L.marker([42.97884, -77.98574], {icon:Museum}).addTo(map);
+jello.bindPopup("<b>Jell-o Gallery</b><br>Exhibits about Jello.");
+var potato = L.marker([43.1897, -112.3436], {icon:Museum}).addTo(map);
+potato.bindPopup("<b>Potato Museum</b><br>The world's largest collection of potato related items.");
+
+</script>
+</body>
+</html>
